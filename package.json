@@ -10,7 +10,8 @@
     "lint": "eslint . --max-warnings=0",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "revalidate:indicators": "bun run scripts/revalidate-indicators.ts"
   },
   "dependencies": {
     "next": "latest",
