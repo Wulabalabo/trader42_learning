@@ -1,0 +1,116 @@
+{
+  "slug": "unemployment-rate",
+  "title": "失业率",
+  "category": "就业",
+  "status": "live",
+  "templateKey": "labor",
+  "navGroup": "就业市场",
+  "scopes": ["美国"],
+  "summary": "衡量愿意找工作的人里，有多少人暂时没有工作，是就业冷暖最直观的比例指标。",
+  "historyUnit": "%",
+  "valueDecimals": 1,
+  "dataProvider": "fred",
+  "seriesKey": "UNRATE",
+  "revalidateSeconds": 86400,
+  "sourceLabel": "美国劳工统计局",
+  "marketReadDescription": "失业率要和非农、工资、劳动参与率一起看，不能单独下结论。",
+  "marketReadIntro": "先看失业率本身，再看它是不是和新增就业走弱、劳动参与率变化、工资降温同时出现。",
+  "marketReadScenarios": [
+    {
+      "title": "读数更热于预期",
+      "reactions": ["美元通常偏弱", "美债收益率通常下行", "股票会先担心增长放缓，再看宽松预期", "黄金通常偏强"]
+    },
+    {
+      "title": "读数更冷于预期",
+      "reactions": ["美元通常偏强", "美债收益率通常上行", "股票更容易交易软着陆", "黄金通常偏弱"]
+    }
+  ],
+  "currentAssessment": {
+    "level": "High",
+    "reason": "失业率是市场判断劳动力市场是否开始松动的核心指标之一。"
+  },
+  "readingGuide": {
+    "summary": [
+      "失业率就是在说：愿意找工作的人里，现在有多少比例还没找到工作。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它是在用一个最直观的比例，告诉你劳动力市场到底紧不紧。"
+          },
+          {
+            "type": "paragraph",
+            "text": "单看低失业率，通常代表劳动力市场仍然偏紧；如果它开始持续抬升，就说明找工作正在变得更难。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["失业率低 = 愿意找工作的人大多还能找到工作", "失业率上升 = 就业市场在变松", "必须和非农、工资、劳动参与率一起看，不能单独下结论"]
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "如果失业率抬升同时伴随新增就业走弱，市场就会更认真地交易增长放缓或降息预期。"
+          },
+          {
+            "type": "paragraph",
+            "text": "看它，就是在看整个劳动力市场有没有从偏紧慢慢走向宽松。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "失业率抬升如果伴随新增走弱，通常会显著改变市场对增长和利率路径的判断。",
+  "whatItMeans": [
+    "低失业率通常代表企业还在积极吸收劳动力。",
+    "抬升要看是短期噪声，还是开始形成趋势。",
+    "最好和劳动参与率、平均时薪、非农修正值一起交叉验证。"
+  ],
+  "cannotTell": [
+    "它不能单独说明职位质量和工时变化。",
+    "它也不能替代工资、非农和职位空缺这些更细的就业信息。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "High",
+      "reason": "失业率抬升会压低对更高利率维持时间的预期。"
+    },
+    {
+      "market": "美债",
+      "level": "High",
+      "reason": "债券会快速重定价增长放缓和降息概率。"
+    },
+    {
+      "market": "股票",
+      "level": "Medium",
+      "reason": "先看增长担忧，后看政策缓和是否形成支撑。"
+    },
+    {
+      "market": "黄金",
+      "level": "Medium",
+      "reason": "主要通过真实利率和避险路径传导。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 3.7 },
+    { "date": "2024-03", "value": 3.8 },
+    { "date": "2024-05", "value": 4.0 },
+    { "date": "2024-07", "value": 4.1 },
+    { "date": "2024-09", "value": 4.1 },
+    { "date": "2024-11", "value": 4.2 },
+    { "date": "2025-01", "value": 4.1 }
+  ],
+  "historyNote": "当前先用学习序列帮助理解失业率抬升和就业放缓之间的关系。"
+}

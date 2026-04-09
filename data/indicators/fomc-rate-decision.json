@@ -1,0 +1,131 @@
+{
+  "slug": "fomc-rate-decision",
+  "title": "FOMC 利率决议",
+  "category": "政策",
+  "scopes": ["美国"],
+  "summary": "设定联邦基金目标利率区间，并锚定市场的政策路径。",
+  "historyUnit": "%",
+  "dataProvider": "fred",
+  "seriesKey": "DFEDTARU",
+  "revalidateSeconds": 86400,
+  "fredSeriesId": "DFEDTARU",
+  "marketReadDescription": "先看声明、点阵图和路径变化。",
+  "marketReadIntro": "先看有没有改口径，再看点阵图有没有把未来路径抬高或压低。",
+  "marketReadScenarios": [
+    {
+      "title": "更鹰派时",
+      "reactions": ["美元通常偏强", "美债收益率通常上行", "股票通常承压", "黄金通常偏弱"]
+    },
+    {
+      "title": "更鸽派时",
+      "reactions": ["美元通常偏弱", "美债收益率通常下行", "股票通常得到缓解", "黄金通常偏强"]
+    }
+  ],
+  "currentAssessment": {
+    "level": "High",
+    "reason": "这是关于利率、流动性和风险资产最直接、最清晰的政策信号。"
+  },
+  "readingGuide": {
+    "summary": [
+      "FOMC 利率决议就是在说：美联储这次是继续踩刹车、按兵不动，还是准备开始松手。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它告诉你美联储是在收紧、按兵不动，还是在放松。"
+          },
+          {
+            "type": "paragraph",
+            "text": "交易员通常不只看利率本身，还会看声明、点阵图和新闻发布会。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["市场真正交易的，通常不是这次动没动，而是后面准备怎么走", "声明和点阵图的重要性有时不亚于利率本身", "政策路径一变，美元、美债、股票和黄金都会跟着重定价"]
+          }
+        ]
+      },
+      {
+        "title": "为什么它杀伤力这么大？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "因为它直接决定借钱贵不贵，而借钱成本几乎会影响到整个金融市场。"
+          },
+          {
+            "type": "paragraph",
+            "text": "只要市场发现美联储比原来想的更鹰派或更鸽派，几乎所有资产都会立刻重定价。"
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它是市场判断政策方向时最直接的锚点之一。"
+          },
+          {
+            "type": "paragraph",
+            "text": "它一出来，市场往往先想的是：未来利率会不会更高，或者更低。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "一次利率决议就能重新定价整条收益率曲线。",
+  "whatItMeans": [
+    "它告诉你美联储这次是在收紧、按兵不动，还是在放松。",
+    "声明、点阵图和发布会往往比单独的利率数字更重要，因为它们会改变市场对未来路径的想象。",
+    "市场真正交易的通常是预期和结果之间的差距，而不是结果本身。"
+  ],
+  "cannotTell": [
+    "它不能保证下次会议一定如何行动。",
+    "如果没有新闻发布会和预测，它也无法完整解释未来路径。",
+    "它也不能单独展示真实经济的全貌。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "High",
+      "reason": "政策方向会直接利多或利空美元。"
+    },
+    {
+      "market": "美债",
+      "level": "High",
+      "reason": "整条收益率曲线都可能立刻移动。"
+    },
+    {
+      "market": "股票",
+      "level": "High",
+      "reason": "折现率和流动性会影响估值。"
+    },
+    {
+      "market": "黄金",
+      "level": "High",
+      "reason": "实际利率预期是黄金定价的核心。"
+    },
+    {
+      "market": "原油",
+      "level": "Medium",
+      "reason": "政策对增长和美元的影响通常大于对商品本身的直接影响。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 5.5 },
+    { "date": "2024-03", "value": 5.5 },
+    { "date": "2024-05", "value": 5.25 },
+    { "date": "2024-07", "value": 5.25 },
+    { "date": "2024-09", "value": 5.0 },
+    { "date": "2024-11", "value": 5.0 },
+    { "date": "2025-01", "value": 4.75 }
+  ],
+  "historyNote": "用于学习的目标利率样本路径。"
+}

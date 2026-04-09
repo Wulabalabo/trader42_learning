@@ -1,0 +1,115 @@
+{
+  "slug": "ism-services-pmi",
+  "title": "S&P Global 美国服务业 PMI",
+  "category": "增长",
+  "status": "live",
+  "templateKey": "growth",
+  "navGroup": "增长与景气",
+  "scopes": ["美国"],
+  "summary": "S&P Global 美国服务业 PMI 是服务业景气快读指标，和 ISM 服务业 PMI 高度相关，可作为现实可得的替代口径。",
+  "historyUnit": "指数",
+  "dataProvider": "spglobal-release",
+  "seriesKey": "us-services-pmi",
+  "revalidateSeconds": 43200,
+  "sourceLabel": "S&P Global（替代口径）",
+  "marketReadDescription": "服务业 PMI 先看方向，再确认是否能被后续消费、就业和通胀数据验证。",
+  "marketReadIntro": "先看服务业景气是否稳在扩张区间，再看它会不会强化增长韧性和服务通胀偏黏的叙事。",
+  "marketReadScenarios": [
+    {
+      "title": "更热时",
+      "reactions": ["增长预期通常上调", "美元和美债收益率通常偏强", "股票会在增长改善和利率压力之间重新平衡", "黄金通常更依赖利率端反应"]
+    },
+    {
+      "title": "更冷时",
+      "reactions": ["增长预期通常下调", "美元和美债收益率通常偏弱", "股票可能先承压，再看政策预期是否缓和", "黄金通常受实际收益率影响更明显"]
+    }
+  ],
+  "currentAssessment": {
+    "level": "High",
+    "reason": "美国经济里服务业占比更大，所以服务业景气快读对增长和通胀判断都很关键。"
+  },
+  "readingGuide": {
+    "summary": [
+      "S&P Global 美国服务业 PMI 是观察服务业商业活动的快读指标，它和 ISM 服务业 PMI 高度相关，但不是同一份调查。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "因为美国经济里服务业占比更大，消费、旅游、医疗、金融和商业服务都集中在这里。"
+          },
+          {
+            "type": "paragraph",
+            "text": "它和 ISM 服务业 PMI 高度相关，方向上通常一致，所以在缺少 ISM 免费原生序列时，可以作为高相关替代。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["高于 50 通常意味着服务业还在扩张", "服务业持续偏热，通常说明增长和服务通胀都不容易很快冷下来", "它和 ISM 服务业 PMI 高度相关，但不能把它们当成同一个数据"]
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它是看美国服务业景气的一张快读成绩单。"
+          },
+          {
+            "type": "paragraph",
+            "text": "看它，就能更早知道美国经济最重要的那一大块服务业到底还热不热。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "它既影响增长预期，也影响市场对服务通胀是否黏性的判断。即使不是 ISM 原始调查，方向信号仍然很有参考价值。",
+  "whatItMeans": [
+    "先看指数是否稳在 50 以上。",
+    "再看它和 ISM 制造业 PMI、零售销售、就业数据是否同向。",
+    "如果服务业持续偏热，市场通常会更谨慎地下修降息预期。"
+  ],
+  "cannotTell": [
+    "它不能替代后续的零售销售、就业和通胀硬数据。",
+    "它也不能被直接当成 ISM 服务业 PMI 本身，因为两者不是同一份调查。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "Medium",
+      "reason": "更强的服务业活动通常支撑增长与利率预期。"
+    },
+    {
+      "market": "美债",
+      "level": "Medium",
+      "reason": "债券会通过增长与通胀路径重新定价。"
+    },
+    {
+      "market": "股票",
+      "level": "Medium",
+      "reason": "风险资产会在增长改善和利率压力之间重新平衡。"
+    },
+    {
+      "market": "黄金",
+      "level": "Low",
+      "reason": "更多通过真实利率间接传导。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 52.5 },
+    { "date": "2024-03", "value": 51.8 },
+    { "date": "2024-05", "value": 53.2 },
+    { "date": "2024-07", "value": 54.0 },
+    { "date": "2024-09", "value": 53.4 },
+    { "date": "2024-11", "value": 52.9 },
+    { "date": "2025-01", "value": 53.7 }
+  ],
+  "historyNote": "当前先用 S&P Global 口径的学习序列帮助观察服务业景气与服务通胀预期之间的关系，并作为 ISM 服务业 PMI 的高相关替代。"
+}

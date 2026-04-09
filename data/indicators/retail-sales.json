@@ -1,0 +1,115 @@
+{
+  "slug": "retail-sales",
+  "title": "零售销售",
+  "category": "增长",
+  "status": "live",
+  "templateKey": "generic",
+  "navGroup": "增长与景气",
+  "scopes": ["美国"],
+  "summary": "观察居民消费强弱，是判断美国内需和增长韧性的核心指标之一。",
+  "historyUnit": "十亿美元",
+  "dataProvider": "fred",
+  "seriesKey": "RSAFS",
+  "revalidateSeconds": 86400,
+  "sourceLabel": "美国人口普查局",
+  "marketReadIntro": "市场怎么读零售销售，核心是看美国居民到底还愿不愿意继续花钱，以及这种消费韧性能不能撑住增长。",
+  "marketReadDescription": "交易员通常不会只看 headline，而是会结合控制组、前值修正和通胀背景一起看。因为同样是消费偏强，有时代表增长很稳，有时也意味着高利率要维持更久。",
+  "marketReadScenarios": [
+    {
+      "title": "读数更热于预期",
+      "reactions": ["美元通常偏强", "美债收益率通常上行", "股票会先交易增长韧性，再考虑利率压力", "黄金通常偏弱"]
+    },
+    {
+      "title": "读数更冷于预期",
+      "reactions": ["美元通常偏弱", "美债收益率通常下行", "股票可能先担心增长放缓，再看宽松预期", "黄金通常偏强"]
+    }
+  ],
+  "currentAssessment": {
+    "level": "High",
+    "reason": "美国经济里消费占比很高，零售销售往往会直接影响增长预期。"
+  },
+  "readingGuide": {
+    "summary": [
+      "零售销售在回答一个简单问题：美国居民最近有没有继续花钱。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "因为美国经济很大一部分靠居民消费驱动，所以看零售销售，本质上就是在看美国内需有没有继续往前走。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果零售销售持续偏强，市场通常会提高对增长韧性和高利率维持时间的预期。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["零售销售强 = 居民还在继续花钱", "零售销售弱 = 内需可能开始踩刹车", "要同时看控制组和前值修正，不能只盯 headline"]
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它是在看美国消费引擎还有没有继续转。"
+          },
+          {
+            "type": "paragraph",
+            "text": "看它，就能更直观地判断美国经济的内需韧性到底还在不在。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "它直接关系到内需强不强，也关系到利率高位下消费有没有开始踩刹车。",
+  "whatItMeans": [
+    "先看 headline，再看控制组和前值修正。",
+    "强零售通常意味着内需仍有韧性。",
+    "如果强消费同时伴随高通胀，市场会更谨慎地下调利率预期。"
+  ],
+  "cannotTell": [
+    "它不能单独区分价格上涨和真实销量增长。",
+    "它也不能替代消费信心、收入和信用数据。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "Medium",
+      "reason": "更强的消费通常支撑增长与利率预期。"
+    },
+    {
+      "market": "美债",
+      "level": "High",
+      "reason": "债券会更敏感地调整增长和降息时点。"
+    },
+    {
+      "market": "股票",
+      "level": "High",
+      "reason": "消费韧性会影响盈利预期和风险偏好。"
+    },
+    {
+      "market": "黄金",
+      "level": "Low",
+      "reason": "主要通过利率路径间接影响。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 700.6 },
+    { "date": "2024-03", "value": 709.8 },
+    { "date": "2024-05", "value": 712.5 },
+    { "date": "2024-07", "value": 716.2 },
+    { "date": "2024-09", "value": 720.1 },
+    { "date": "2024-11", "value": 724.7 },
+    { "date": "2025-01", "value": 728.3 }
+  ],
+  "historyNote": "当前先用学习序列帮助用户建立消费强弱与增长预期之间的直觉。"
+}

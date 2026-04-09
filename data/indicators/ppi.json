@@ -1,0 +1,117 @@
+{
+  "slug": "ppi",
+  "title": "生产者价格指数（PPI）",
+  "category": "通胀",
+  "status": "live",
+  "templateKey": "inflation",
+  "navGroup": "通胀指标",
+  "scopes": ["美国"],
+  "summary": "PPI 反映生产端的价格变化，常被用来观察企业成本能不能继续向下游传导。",
+  "historyUnit": "指数点",
+  "dataProvider": "fred",
+  "seriesKey": "PPIACO",
+  "revalidateSeconds": 86400,
+  "sourceLabel": "美国劳工统计局",
+  "dataSemanticsLabel": "价格指数路径",
+  "dataSemanticsNote": "当前展示的是生产者价格指数路径，更适合观察企业端成本压力的传导趋势。",
+  "currentAssessment": {
+    "level": "Medium",
+    "reason": "PPI 不是最终消费者价格，但它能提前提示企业成本压力是否重新升温。"
+  },
+  "readingGuide": {
+    "summary": [
+      "PPI 可以理解成企业端的物价表，先看工厂和批发环节的成本有没有变贵。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "因为它常常会比消费者通胀更早反映上游成本变化。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果生产端价格重新抬头，市场会担心企业成本能不能继续向下游传导。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["PPI 上升 = 企业端成本在变贵", "PPI 回落 = 上游成本压力可能在减轻", "它不是终点，但常常会影响市场对后续 CPI 的想象"]
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它更像消费者通胀前面的一站，先看企业端成本是不是又热起来了。"
+          },
+          {
+            "type": "paragraph",
+            "text": "看它，就能大概判断通胀压力是不是有可能从上游重新传回来。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "PPI 往往不是终点，但它会影响市场对后续 CPI 和核心通胀路径的想象。",
+  "marketReadIntro": "市场怎么读 PPI，重点是企业端成本压力会不会重新传导到后面的消费通胀。",
+  "marketReadDescription": "交易上不会只机械看一个数字，而是会结合核心项、利润率压力以及 CPI 传导可能性一起判断它对利率预期的意义。",
+  "marketReadScenarios": [
+    {
+      "title": "读数更热于预期",
+      "reactions": ["美元通常偏强", "美债收益率通常上行", "股票更容易担心利润率和利率压力", "黄金通常偏弱"]
+    },
+    {
+      "title": "读数更冷于预期",
+      "reactions": ["美元通常偏弱", "美债收益率通常下行", "股票通常得到缓解", "黄金通常偏强"]
+    }
+  ],
+  "whatItMeans": [
+    "先看 headline，再看核心项。",
+    "如果上游价格连续走强，后续消费通胀回落可能更慢。",
+    "要结合利润率和企业定价能力一起看，不能机械外推。"
+  ],
+  "cannotTell": [
+    "它不能直接等同于 CPI，因为企业不一定会把所有成本都传导给消费者。",
+    "它也不能单独决定利率路径，仍要结合服务通胀和就业。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "Medium",
+      "reason": "如果成本压力抬头，美元通常会得到一定利率预期支撑。"
+    },
+    {
+      "market": "美债",
+      "level": "Medium",
+      "reason": "债券会把它当作后续通胀传导的早期线索。"
+    },
+    {
+      "market": "股票",
+      "level": "Low",
+      "reason": "除非显著超预期，否则更多影响行业利润率预期。"
+    },
+    {
+      "market": "黄金",
+      "level": "Low",
+      "reason": "主要通过实际利率预期间接传导。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 142.1 },
+    { "date": "2024-03", "value": 142.8 },
+    { "date": "2024-05", "value": 143.2 },
+    { "date": "2024-07", "value": 143.6 },
+    { "date": "2024-09", "value": 144.0 },
+    { "date": "2024-11", "value": 144.5 },
+    { "date": "2025-01", "value": 144.9 }
+  ],
+  "historyNote": "当前先用学习序列帮助理解生产端价格压力与消费通胀传导之间的关系。"
+}

@@ -1,0 +1,115 @@
+{
+  "slug": "initial-jobless-claims",
+  "title": "初请失业金人数",
+  "category": "就业",
+  "status": "live",
+  "templateKey": "labor",
+  "navGroup": "就业市场",
+  "scopes": ["美国"],
+  "summary": "初请是每周最早能看到的就业降温信号之一，适合用来观察裁员压力有没有抬头。",
+  "historyUnit": "千人",
+  "dataProvider": "fred",
+  "seriesKey": "ICSA",
+  "revalidateSeconds": 21600,
+  "sourceLabel": "美国劳工部",
+  "marketReadDescription": "初请是高频就业快读，要和续请、非农和失业率一起确认方向。",
+  "marketReadIntro": "如果初请持续抬升，市场通常会更快开始交易就业市场正在松动。",
+  "marketReadScenarios": [
+    {
+      "title": "读数更热于预期",
+      "reactions": ["美元通常偏弱", "美债收益率通常下行", "股票会先担心增长放缓，再看宽松预期", "黄金通常偏强"]
+    },
+    {
+      "title": "读数更冷于预期",
+      "reactions": ["美元通常偏强", "美债收益率通常上行", "股票通常得到缓解", "黄金通常偏弱"]
+    }
+  ],
+  "currentAssessment": {
+    "level": "Medium",
+    "reason": "它频率高、反应快，是观察裁员压力是否上来的重要先行线索。"
+  },
+  "readingGuide": {
+    "summary": [
+      "初请失业金人数是在看：这一周新出现了多少人开始申请失业救济。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "因为它是周度数据，比非农和失业率更早给出就业转弱迹象。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果初请持续抬升，市场通常会更快开始交易就业市场正在松动。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["初请上升 = 新裁员人数可能在变多", "初请回落 = 裁员压力可能没有继续扩散", "它频率高，但单周噪声也大，所以最好看连续趋势"]
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它像就业市场的高频温度计，先帮你看裁员压力有没有抬头。"
+          },
+          {
+            "type": "paragraph",
+            "text": "看它，就是在看就业市场是不是开始从边缘松动，往更广的范围扩散。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "它适合拿来观察裁员压力有没有从局部变成更广泛的趋势。",
+  "whatItMeans": [
+    "先看四周均值，不要只盯单周噪声。",
+    "持续抬升通常意味着裁员压力在增加。",
+    "最好和续请、非农、失业率一起确认就业是否真的转弱。"
+  ],
+  "cannotTell": [
+    "它不能单独说明整个就业市场已经恶化。",
+    "节假日和季节调整会让单周读数噪声很大。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "Medium",
+      "reason": "持续走高通常会压低利率预期并拖累美元。"
+    },
+    {
+      "market": "美债",
+      "level": "Medium",
+      "reason": "债券会更早把它当作就业松动线索。"
+    },
+    {
+      "market": "股票",
+      "level": "Low",
+      "reason": "更多影响宏观情绪，不如非农那样直接。"
+    },
+    {
+      "market": "黄金",
+      "level": "Low",
+      "reason": "主要通过利率预期间接传导。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 209 },
+    { "date": "2024-03", "value": 214 },
+    { "date": "2024-05", "value": 221 },
+    { "date": "2024-07", "value": 229 },
+    { "date": "2024-09", "value": 234 },
+    { "date": "2024-11", "value": 238 },
+    { "date": "2025-01", "value": 243 }
+  ],
+  "historyNote": "当前先用学习序列帮助理解周度初请抬升与就业边际转弱之间的联系，页面统一按万人展示。"
+}

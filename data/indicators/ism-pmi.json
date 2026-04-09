@@ -1,0 +1,130 @@
+{
+  "slug": "ism-pmi",
+  "title": "ISM 制造业 PMI",
+  "category": "增长",
+  "scopes": ["美国"],
+  "summary": "基于调查的制造业商业活动快速指标。",
+  "historyUnit": "指数",
+  "dataProvider": "tradingeconomics-page",
+  "seriesKey": "united-states/business-confidence",
+  "revalidateSeconds": 43200,
+  "marketReadDescription": "PMI 先看方向，再确认是否能被硬数据验证。",
+  "marketReadIntro": "先看订单，再看价格，最后看它是不是和后续硬数据同向。",
+  "marketReadScenarios": [
+    {
+      "title": "更热时",
+      "reactions": ["增长预期通常上调", "美元和美债收益率通常偏强", "股票会先看利率影响，再看需求改善", "黄金通常更依赖利率端反应"]
+    },
+    {
+      "title": "更冷时",
+      "reactions": ["增长预期通常下调", "美元和美债收益率通常偏弱", "股票可能先承压，再看政策预期是否缓和", "黄金通常受实际收益率影响更明显"]
+    }
+  ],
+  "currentAssessment": {
+    "level": "Medium",
+    "reason": "PMI 是有用的增长信号，但噪声较大，通常需要其他数据确认。"
+  },
+  "readingGuide": {
+    "summary": [
+      "ISM 制造业 PMI 就是在问一群制造业企业：你们最近的订单、生产和景气，到底是在变好还是变差。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它让交易员快速感知制造业动能，是一种比硬数据更早出来的情绪和方向快读。"
+          },
+          {
+            "type": "paragraph",
+            "text": "它不是硬数据本身，而是企业调查出来的快读信号。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["高于 50 通常意味着扩张，低于 50 通常意味着收缩", "新订单和支付价格分项往往特别重要", "它是早期信号，不是最终答案，后面还要看硬数据确认"]
+          }
+        ]
+      },
+      {
+        "title": "为什么市场会先看它？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "因为它出来得快，常常能比工业产出、GDP 这些更晚的数据更早提示制造业是不是在转向。"
+          },
+          {
+            "type": "paragraph",
+            "text": "如果 PMI 先掉下去，市场通常会开始怀疑增长是不是在变弱；如果 PMI 重新站稳，市场又会开始交易景气修复。"
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它是看制造业景气度的调查快读。"
+          },
+          {
+            "type": "paragraph",
+            "text": "你可以把它理解成制造业的“提前打分”。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "PMI 往往会先于硬数据转向，能让交易员快速感知动能。",
+  "whatItMeans": [
+    "高于 50 通常意味着扩张，低于 50 则意味着收缩。",
+    "新订单和支付价格分项往往非常重要。",
+    "它是有用的早期信号，但不是最终答案。"
+  ],
+  "cannotTell": [
+    "它不能衡量整个经济。",
+    "它可能和 GDP、就业等硬数据出现背离。",
+    "它本身不能告诉你市场会如何精确反应。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "Medium",
+      "reason": "增长意外会推动利率预期微调。"
+    },
+    {
+      "market": "美债",
+      "level": "Medium",
+      "reason": "债券交易员把它当作早期增长读数。"
+    },
+    {
+      "market": "股票",
+      "level": "Medium",
+      "reason": "它会影响增长情绪，但信号并不干净。"
+    },
+    {
+      "market": "黄金",
+      "level": "Low",
+      "reason": "通常还是跟随政策和实际收益率。"
+    },
+    {
+      "market": "原油",
+      "level": "Medium",
+      "reason": "活动预期会影响需求判断。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 49.1 },
+    { "date": "2024-03", "value": 50.3 },
+    { "date": "2024-05", "value": 48.7 },
+    { "date": "2024-07", "value": 49.9 },
+    { "date": "2024-09", "value": 47.2 },
+    { "date": "2024-11", "value": 48.1 },
+    { "date": "2025-01", "value": 50.1 }
+  ],
+  "historyNote": "用于学习的 PMI 样本路径。"
+}

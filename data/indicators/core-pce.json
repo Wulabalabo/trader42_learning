@@ -1,0 +1,117 @@
+{
+  "slug": "core-pce",
+  "title": "核心 PCE",
+  "category": "通胀",
+  "status": "live",
+  "templateKey": "inflation",
+  "navGroup": "通胀指标",
+  "scopes": ["美国"],
+  "summary": "剔除波动更大的食品和能源后，更接近美联储真正盯着看的底层通胀。",
+  "historyUnit": "指数点",
+  "dataProvider": "fred",
+  "seriesKey": "PCEPILFE",
+  "revalidateSeconds": 86400,
+  "sourceLabel": "美国经济分析局",
+  "dataSemanticsLabel": "价格指数路径",
+  "dataSemanticsNote": "当前展示的是核心 PCE 指数点位，可用来观察底层价格水平和回落斜率。",
+  "currentAssessment": {
+    "level": "High",
+    "reason": "核心 PCE 更贴近美联储决策语言，是判断通胀回落是否足够稳的关键指标。"
+  },
+  "readingGuide": {
+    "summary": [
+      "核心 PCE 就是在 PCE 的基础上，先把食品和能源拿掉，再看更稳定的消费价格有没有继续升温。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "因为它更接近美联储真正盯着看的底层通胀。"
+          },
+          {
+            "type": "paragraph",
+            "text": "服务消费和医疗等项目如果还很黏，市场通常会认为降息空间没那么快打开。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["核心 PCE 是美联储特别重视的底层通胀口径", "如果它回落慢，市场通常会觉得高利率要维持更久", "它经常要和核心 CPI 一起看，确认底层通胀方向是不是一致"]
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它不是最热闹、最常上头条的通胀数字，但往往是政策层最认真盯着看的那一个。"
+          },
+          {
+            "type": "paragraph",
+            "text": "看它，就是在看美联储会不会觉得底层通胀已经足够老实。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "核心 PCE 如果回落慢，市场会更谨慎地下修高利率维持时间。",
+  "marketReadIntro": "市场怎么读核心 PCE，重点是它会不会让市场重新评估美联储对底层通胀的耐心。",
+  "marketReadDescription": "如果核心 PCE 比预期更黏，债券和美元通常先反应；如果它连续降温，市场才会更愿意交易更早、更深的宽松路径。",
+  "marketReadScenarios": [
+    {
+      "title": "读数更热于预期",
+      "reactions": ["美元通常偏强", "美债收益率通常上行", "股票通常承压", "黄金通常偏弱"]
+    },
+    {
+      "title": "读数更冷于预期",
+      "reactions": ["美元通常偏弱", "美债收益率通常下行", "股票通常得到缓解", "黄金通常偏强"]
+    }
+  ],
+  "whatItMeans": [
+    "它比 headline PCE 更适合看底层趋势。",
+    "服务消费和医疗等项目往往决定它够不够黏。",
+    "最好把它和核心 CPI 一起看，确认通胀回落是否同步。"
+  ],
+  "cannotTell": [
+    "它不能完全替代 headline 通胀，因为居民仍然会感受到食品和能源波动。",
+    "它也不能单独决定市场方向，预期差仍然很重要。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "High",
+      "reason": "更黏的核心 PCE 往往支撑美元利差逻辑。"
+    },
+    {
+      "market": "美债",
+      "level": "High",
+      "reason": "直接影响市场对降息节奏的定价。"
+    },
+    {
+      "market": "股票",
+      "level": "Medium",
+      "reason": "高核心通胀会压制估值，但也要结合增长背景。"
+    },
+    {
+      "market": "黄金",
+      "level": "Medium",
+      "reason": "主要通过真实利率和政策预期传导。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 124.9 },
+    { "date": "2024-03", "value": 125.6 },
+    { "date": "2024-05", "value": 126.2 },
+    { "date": "2024-07", "value": 126.8 },
+    { "date": "2024-09", "value": 127.3 },
+    { "date": "2024-11", "value": 127.9 },
+    { "date": "2025-01", "value": 128.4 }
+  ],
+  "historyNote": "当前先用学习序列帮助判断核心 PCE 的回落斜率和通胀黏性。"
+}

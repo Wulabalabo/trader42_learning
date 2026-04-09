@@ -1,0 +1,116 @@
+{
+  "slug": "jolts-job-openings",
+  "title": "职位空缺（JOLTS）",
+  "category": "就业",
+  "status": "live",
+  "templateKey": "labor",
+  "navGroup": "就业市场",
+  "scopes": ["美国"],
+  "summary": "衡量企业还有多少岗位在招聘，是观察劳动力需求是否降温的重要补充。",
+  "historyUnit": "百万个岗位",
+  "valueDecimals": 1,
+  "dataProvider": "fred",
+  "seriesKey": "JTSJOL",
+  "revalidateSeconds": 86400,
+  "sourceLabel": "美国劳工统计局",
+  "marketReadDescription": "职位空缺要和失业率、非农、工资一起看，判断劳动力需求是不是在系统性降温。",
+  "marketReadIntro": "先看岗位空缺是不是持续回落，再看它和工资、失业率有没有同时指向就业市场松动。",
+  "marketReadScenarios": [
+    {
+      "title": "读数更热于预期",
+      "reactions": ["美元通常偏强", "美债收益率通常上行", "股票会先看利率压力，再看增长韧性", "黄金通常偏弱"]
+    },
+    {
+      "title": "读数更冷于预期",
+      "reactions": ["美元通常偏弱", "美债收益率通常下行", "股票通常得到缓解", "黄金通常偏强"]
+    }
+  ],
+  "currentAssessment": {
+    "level": "Medium",
+    "reason": "职位空缺越多，通常代表企业还在积极招人，劳动力需求仍偏强。"
+  },
+  "readingGuide": {
+    "summary": [
+      "JOLTS 职位空缺是在看：企业现在手里还有多少岗位想招人，但还没招满。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "岗位空缺越多，通常代表企业还在积极找人，劳动力需求仍然偏紧。"
+          },
+          {
+            "type": "paragraph",
+            "text": "职位空缺如果连续回落，市场会更容易接受就业市场正在降温的判断。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["空缺很多 = 企业还在积极招人", "空缺回落 = 招聘需求在降温", "它通常比失业率更早反映招聘端是不是开始松动"]
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它不是在看已经雇了多少人，而是在看企业还有多强的招人意愿。"
+          },
+          {
+            "type": "paragraph",
+            "text": "看它，就能更早感觉到就业市场到底还是偏热，还是正在慢慢冷下来。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "它是看劳动力需求侧是否松动的重要补充，特别适合和失业率、工资一起交叉验证。",
+  "whatItMeans": [
+    "空缺高说明企业手里的招聘需求还不少，劳动力市场通常还偏紧。",
+    "如果空缺持续回落，就业市场通常在逐步降温，招聘端先开始松动。",
+    "最好和工资、失业率、非农一起看，确认这种松动是不是已经扩散到更广的就业面。"
+  ],
+  "cannotTell": [
+    "它不能单独说明招聘最后是否真的落地。",
+    "它也不能替代失业率和工资对劳动力市场松紧的确认。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "Medium",
+      "reason": "职位空缺回落通常意味着利率上行压力减弱。"
+    },
+    {
+      "market": "美债",
+      "level": "Medium",
+      "reason": "债券会通过就业降温和政策路径定价。"
+    },
+    {
+      "market": "股票",
+      "level": "Low",
+      "reason": "影响通常不如非农直接，但能改变中期就业叙事。"
+    },
+    {
+      "market": "黄金",
+      "level": "Low",
+      "reason": "更多通过利率预期间接传导。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 8.7 },
+    { "date": "2024-03", "value": 8.4 },
+    { "date": "2024-05", "value": 8.1 },
+    { "date": "2024-07", "value": 7.9 },
+    { "date": "2024-09", "value": 7.7 },
+    { "date": "2024-11", "value": 7.5 },
+    { "date": "2025-01", "value": 7.3 }
+  ],
+  "historyNote": "当前先用学习序列帮助观察劳动力需求从偏紧走向缓和的过程，页面统一按万个岗位展示。"
+}

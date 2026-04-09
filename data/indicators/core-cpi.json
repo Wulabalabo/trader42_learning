@@ -1,0 +1,117 @@
+{
+  "slug": "core-cpi",
+  "title": "核心 CPI",
+  "category": "通胀",
+  "status": "live",
+  "templateKey": "inflation",
+  "navGroup": "通胀指标",
+  "scopes": ["美国"],
+  "summary": "剔除食品和能源后的 CPI，更适合观察更黏性的通胀压力。",
+  "historyUnit": "指数点",
+  "dataProvider": "fred",
+  "seriesKey": "CPILFESL",
+  "revalidateSeconds": 86400,
+  "sourceLabel": "美国劳工统计局",
+  "dataSemanticsLabel": "价格指数路径",
+  "dataSemanticsNote": "当前展示的是核心 CPI 指数点位，可用来观察价格水平、变化速度和相对位置。",
+  "currentAssessment": {
+    "level": "High",
+    "reason": "核心 CPI 往往更能代表底层服务通胀，是交易员判断通胀黏性的重要锚点。"
+  },
+  "readingGuide": {
+    "summary": [
+      "核心 CPI 就是把食品和能源这两类短期波动更大的项目先拿掉，再看剩余价格有没有继续变贵。"
+    ],
+    "sections": [
+      {
+        "title": "它到底在干嘛？",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "因为食品和能源经常受天气、地缘政治和油价冲击影响，噪声比较大。"
+          },
+          {
+            "type": "paragraph",
+            "text": "核心 CPI 更适合看服务项和住房项这类更黏、更难快速回落的通胀部分。"
+          }
+        ]
+      },
+      {
+        "title": "简单来说：",
+        "blocks": [
+          {
+            "type": "bullets",
+            "items": ["headline CPI 像表面温度，核心 CPI 更像底层火力", "如果核心 CPI 还很高，市场通常不会轻易相信通胀已经彻底降下来了", "它特别适合观察服务和住房这些更黏的价格压力"]
+          }
+        ]
+      },
+      {
+        "title": "一句话总结：",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "它不是居民最直观感受到的全部物价，但它更接近市场判断底层通胀压力有没有真的退干净。"
+          },
+          {
+            "type": "paragraph",
+            "text": "看它，就是在看那些最难降的价格部分到底有没有开始松动。"
+          }
+        ]
+      }
+    ]
+  },
+  "whyItMatters": "如果核心 CPI 迟迟下不来，市场会认为美联储更难快速转向宽松。",
+  "marketReadIntro": "市场怎么读核心 CPI，关键是看更黏的服务和住房通胀有没有真正松动。",
+  "marketReadDescription": "如果核心项持续偏热，市场通常会下调短期内快速降息的预期；如果核心项连续回落，风险资产的压力才会更明显缓解。",
+  "marketReadScenarios": [
+    {
+      "title": "读数更热于预期",
+      "reactions": ["美元通常偏强", "美债收益率通常上行", "股票通常承压", "黄金通常偏弱"]
+    },
+    {
+      "title": "读数更冷于预期",
+      "reactions": ["美元通常偏弱", "美债收益率通常下行", "股票通常得到缓解", "黄金通常偏强"]
+    }
+  ],
+  "whatItMeans": [
+    "它更适合看底层通胀趋势，而不是短期油价扰动。",
+    "服务项和住房项通常更黏，回落速度慢。",
+    "交易时要把它和核心 PCE 一起看，确认方向是否一致。"
+  ],
+  "cannotTell": [
+    "它不能替代 headline CPI，因为居民真实感受仍然会受到食品和能源影响。",
+    "它也不能单独告诉你下次议息会议一定怎么走。"
+  ],
+  "marketImpact": [
+    {
+      "market": "美元",
+      "level": "High",
+      "reason": "更黏的核心通胀通常支撑美元。"
+    },
+    {
+      "market": "美债",
+      "level": "High",
+      "reason": "会直接影响降息时点和收益率曲线定价。"
+    },
+    {
+      "market": "股票",
+      "level": "Medium",
+      "reason": "高核心通胀会压制估值，但也要结合增长韧性看。"
+    },
+    {
+      "market": "黄金",
+      "level": "High",
+      "reason": "主要通过真实利率预期传导。"
+    }
+  ],
+  "history": [
+    { "date": "2024-01", "value": 308.4 },
+    { "date": "2024-03", "value": 310.7 },
+    { "date": "2024-05", "value": 312.2 },
+    { "date": "2024-07", "value": 313.1 },
+    { "date": "2024-09", "value": 314.5 },
+    { "date": "2024-11", "value": 315.7 },
+    { "date": "2025-01", "value": 316.2 }
+  ],
+  "historyNote": "当前先用学习序列观察核心通胀黏性，后续会继续补入更完整的解释层。"
+}
