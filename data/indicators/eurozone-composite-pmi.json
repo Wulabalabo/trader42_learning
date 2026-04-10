@@ -1,0 +1,34 @@
+{
+  "slug": "eurozone-composite-pmi",
+  "title": "欧元区商业景气指数",
+  "category": "增长",
+  "templateKey": "growth",
+  "navGroup": "增长与景气",
+  "scopes": ["欧元区"],
+  "summary": "欧元区商业景气的高频快读指标，用来快速观察企业层面的景气方向。",
+  "historyUnit": "指数",
+  "dataProvider": "tradingeconomics-page",
+  "seriesKey": "euro-area/business-confidence",
+  "releaseCadence": "每月",
+  "updatedAt": "2026-04-10",
+  "sourceLabel": "European Commission / TradingEconomics",
+  "currentAssessment": { "level": "Medium", "reason": "它是增长脉冲的重要快读，但仍需要硬数据确认。" },
+  "whyItMatters": "它能比很多硬数据更早提示欧元区企业景气是在改善还是走弱。",
+  "whatItMeans": ["读数越高，通常说明企业景气越好；读数越低，则说明企业信心和活动偏弱。"],
+  "cannotTell": ["它不能单独替代工业、零售和就业等硬数据。"],
+  "marketImpact": [
+    { "market": "欧洲股票", "level": "Medium", "reason": "景气方向会影响盈利和风险偏好。" },
+    { "market": "欧元", "level": "Medium", "reason": "增长改善会部分支撑汇率。" }
+  ],
+  "history": [
+    { "date": "2025-08", "value": 49.2 },
+    { "date": "2025-09", "value": 49.4 },
+    { "date": "2025-10", "value": 49.7 },
+    { "date": "2025-11", "value": 49.9 },
+    { "date": "2025-12", "value": 50.1 },
+    { "date": "2026-01", "value": 49.8 },
+    { "date": "2026-02", "value": 50.2 },
+    { "date": "2026-03", "value": 50.4 }
+  ],
+  "historyNote": "当前先保留样本历史，用来建立欧元区景气阅读框架；最新值会优先接 TradingEconomics 公共页。"
+}

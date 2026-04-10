@@ -165,4 +165,139 @@ describe('indicator data service', () => {
       sourceLabel: 'TradingEconomics 公共页（最新值）',
     });
   });
+
+  it('loads Eurozone inflation latest snapshot from the TradingEconomics public page', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue({
+      ok: true,
+      text: async () => 'Inflation Rate in Euro Area increased to 2.50 percent in March from 1.90 percent in February of 2026.',
+    });
+
+    const indicator = await getIndicatorDataBySlug('eurozone-hicp', { fetchImpl: fetchImpl as typeof fetch });
+
+    expect(indicator?.latestSnapshot).toEqual({
+      value: 2.5,
+      previousValue: 1.9,
+      periodLabel: '2026-03',
+      sourceLabel: 'TradingEconomics 公共页（最新值）',
+    });
+  });
+
+  it('keeps Eurozone inflation snapshot while replacing history with FRED observations', async () => {
+    const fetchImpl = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes('tradingeconomics.com')) {
+        return {
+          ok: true,
+          text: async () => 'Inflation Rate in Euro Area increased to 2.50 percent in March from 1.90 percent in February of 2026.',
+        } as Response;
+      }
+
+      return {
+        ok: true,
+        json: async () => ({ observations: [{ date: '2025-12-01', value: '129.49' }] }),
+      } as Response;
+    });
+
+    const indicator = await getIndicatorDataBySlug('eurozone-hicp', { apiKey: 'demo-key', fetchImpl: fetchImpl as typeof fetch });
+
+    expect(indicator?.latestSnapshot).toEqual({
+      value: 2.5,
+      previousValue: 1.9,
+      periodLabel: '2026-03',
+      sourceLabel: 'TradingEconomics 公共页（最新值）',
+    });
+    expect(indicator?.historySource).toBe('FRED');
+    expect(fetchImpl.mock.calls.some((call) => String(call[0]).includes('series_id=CP0000EZ19M086NEST'))).toBe(true);
+    expect(indicator?.history.at(-1)).toEqual({ date: '2025-12-01', value: 129.49 });
+  });
+
+  it('loads Eurozone core inflation latest snapshot from the TradingEconomics public page', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue({
+      ok: true,
+      text: async () => 'Core consumer prices In the Euro Area increased 2.30 percent in March of 2026 over the same month in the previous year. Core Inflation Rate in Euro Area was 2.40 percent in February of 2026.',
+    });
+
+    const indicator = await getIndicatorDataBySlug('eurozone-core-hicp', { fetchImpl: fetchImpl as typeof fetch });
+
+    expect(indicator?.latestSnapshot).toEqual({
+      value: 2.3,
+      previousValue: 2.4,
+      periodLabel: '2026-03',
+      sourceLabel: 'TradingEconomics 公共页（最新值）',
+    });
+  });
+
+  it('keeps Eurozone core inflation snapshot while replacing history with FRED observations', async () => {
+    const fetchImpl = vi.fn(async (input: RequestInfo | URL) => {
+      const url = String(input);
+
+      if (url.includes('tradingeconomics.com')) {
+        return {
+          ok: true,
+          text: async () =>
+            'Core consumer prices In the Euro Area increased 2.30 percent in March of 2026 over the same month in the previous year. Core Inflation Rate in Euro Area was 2.40 percent in February of 2026.',
+        } as Response;
+      }
+
+      return {
+        ok: true,
+        json: async () => ({ observations: [{ date: '2025-12-01', value: '124.43' }] }),
+      } as Response;
+    });
+
+    const indicator = await getIndicatorDataBySlug('eurozone-core-hicp', { apiKey: 'demo-key', fetchImpl: fetchImpl as typeof fetch });
+
+    expect(indicator?.latestSnapshot).toEqual({
+      value: 2.3,
+      previousValue: 2.4,
+      periodLabel: '2026-03',
+      sourceLabel: 'TradingEconomics 公共页（最新值）',
+    });
+    expect(indicator?.historySource).toBe('FRED');
+    expect(fetchImpl.mock.calls.some((call) => String(call[0]).includes('series_id=00XEFDEZ19M086NEST'))).toBe(true);
+    expect(indicator?.history.at(-1)).toEqual({ date: '2025-12-01', value: 124.43 });
+  });
+
+  it('loads ECB deposit rate history from FRED', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ observations: [{ date: '2026-04-09', value: '2.00' }] }),
+    });
+
+    const indicator = await getIndicatorDataBySlug('ecb-deposit-rate', { apiKey: 'demo-key', fetchImpl });
+
+    expect(indicator?.historySource).toBe('FRED');
+    expect(fetchImpl.mock.calls[0]?.[0]).toContain('series_id=ECBDFR');
+    expect(indicator?.history.at(-1)).toEqual({ date: '2026-04-09', value: 2 });
+  });
+
+  it('loads Eurozone unemployment history from FRED', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ observations: [{ date: '2026-03-01', value: '6.20' }] }),
+    });
+
+    const indicator = await getIndicatorDataBySlug('eurozone-unemployment-rate', { apiKey: 'demo-key', fetchImpl });
+
+    expect(indicator?.historySource).toBe('FRED');
+    expect(fetchImpl.mock.calls[0]?.[0]).toContain('series_id=LRHUTTTTEZM156S');
+    expect(indicator?.history.at(-1)).toEqual({ date: '2026-03-01', value: 6.2 });
+  });
+
+  it('loads Eurozone business climate latest snapshot from the TradingEconomics public page', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue({
+      ok: true,
+      text: async () => 'Business Confidence In the Euro Area increased to -0.27 points in March from -0.36 points in February of 2026.',
+    });
+
+    const indicator = await getIndicatorDataBySlug('eurozone-composite-pmi', { fetchImpl: fetchImpl as typeof fetch });
+
+    expect(indicator?.latestSnapshot).toEqual({
+      value: -0.27,
+      previousValue: -0.36,
+      periodLabel: '2026-03',
+      sourceLabel: 'TradingEconomics 公共页（最新值）',
+    });
+  });
 });

@@ -35,7 +35,7 @@ function createIndicator(overrides: Partial<Indicator>): Indicator {
 
 describe('ThemeIndicatorGrid', () => {
   it('renders indicator cards for a theme', async () => {
-    const theme = await getThemeBySlug('labor');
+    const theme = await getThemeBySlug('us', 'labor');
 
     expect(theme).toBeDefined();
     render(<ThemeIndicatorGrid indicators={theme!.indicators} />);

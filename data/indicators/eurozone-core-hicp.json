@@ -1,0 +1,35 @@
+{
+  "slug": "eurozone-core-hicp",
+  "title": "欧元区核心 HICP",
+  "category": "通胀",
+  "templateKey": "inflation",
+  "navGroup": "通胀与价格",
+  "scopes": ["欧元区"],
+  "summary": "去掉能源和食品后的欧元区核心通胀指标。",
+  "historyUnit": "%",
+  "dataProvider": "tradingeconomics-page",
+  "seriesKey": "euro-area/core-inflation-rate",
+  "fredSeriesId": "00XEFDEZ19M086NEST",
+  "releaseCadence": "每月中下旬",
+  "updatedAt": "2026-04-10",
+  "sourceLabel": "TradingEconomics / Eurostat",
+  "currentAssessment": { "level": "High", "reason": "核心通胀更能代表 ECB 真正在意的底层价格黏性。" },
+  "whyItMatters": "核心 HICP 对 ECB 路径和欧债定价影响更直接。",
+  "whatItMeans": ["它帮助判断底层价格压力是不是仍然顽固。"],
+  "cannotTell": ["它不能单独解释成员国之间的分化。"],
+  "marketImpact": [
+    { "market": "欧元", "level": "High", "reason": "核心通胀如果偏高，欧元通常更容易偏强。" },
+    { "market": "欧债", "level": "High", "reason": "核心通胀黏性会压低快速降息预期。" }
+  ],
+  "history": [
+    { "date": "2025-08", "value": 2.8 },
+    { "date": "2025-09", "value": 2.7 },
+    { "date": "2025-10", "value": 2.6 },
+    { "date": "2025-11", "value": 2.5 },
+    { "date": "2025-12", "value": 2.4 },
+    { "date": "2026-01", "value": 2.2 },
+    { "date": "2026-02", "value": 2.4 },
+    { "date": "2026-03", "value": 2.3 }
+  ],
+  "historyNote": "当前先展示学习样本路径，用来识别欧元区核心通胀的黏性。"
+}

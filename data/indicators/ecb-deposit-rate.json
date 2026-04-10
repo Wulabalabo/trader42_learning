@@ -1,0 +1,35 @@
+{
+  "slug": "ecb-deposit-rate",
+  "title": "ECB 存款便利利率",
+  "category": "政策",
+  "templateKey": "policy",
+  "navGroup": "欧洲央行政策",
+  "scopes": ["欧元区"],
+  "summary": "欧洲央行政策立场的关键短端利率锚。",
+  "historyUnit": "%",
+  "dataProvider": "fred",
+  "seriesKey": "ECBDFR",
+  "fredSeriesId": "ECBDFR",
+  "releaseCadence": "每年 8 次左右",
+  "updatedAt": "2026-04-10",
+  "sourceLabel": "ECB / FRED",
+  "currentAssessment": { "level": "High", "reason": "它直接决定欧元区资金价格和市场对 ECB 路径的锚。" },
+  "whyItMatters": "ECB 存款便利利率是欧元区政策定价的核心参考。",
+  "whatItMeans": ["它反映当前政策到底在紧还是在松。"],
+  "cannotTell": ["它不能单独说明未来每次会议一定怎么走。"],
+  "marketImpact": [
+    { "market": "欧元", "level": "High", "reason": "政策路径变化会快速传导到汇率。" },
+    { "market": "欧债", "level": "High", "reason": "欧债曲线首先反映利率路径重定价。" }
+  ],
+  "history": [
+    { "date": "2024-06", "value": 4.0 },
+    { "date": "2024-09", "value": 3.75 },
+    { "date": "2024-12", "value": 3.5 },
+    { "date": "2025-03", "value": 3.25 },
+    { "date": "2025-06", "value": 3.0 },
+    { "date": "2025-09", "value": 2.75 },
+    { "date": "2025-12", "value": 2.5 },
+    { "date": "2026-03", "value": 2.5 }
+  ],
+  "historyNote": "当前先展示学习样本路径，用来建立 ECB 政策阅读框架。"
+}

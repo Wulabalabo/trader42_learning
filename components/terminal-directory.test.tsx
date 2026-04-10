@@ -15,7 +15,7 @@ describe('TerminalDirectory', () => {
     expect(screen.getByRole('link', { name: /欧元区市场/ })).toHaveAttribute('href', '/markets/eurozone');
     expect(screen.getByRole('link', { name: /日本市场/ })).toHaveAttribute('href', '/markets/japan');
     expect(screen.getByRole('link', { name: /Crypto 市场/ })).toHaveAttribute('href', '/markets/crypto');
-    expect(screen.getAllByText('施工中').length).toBeGreaterThanOrEqual(4);
+    expect(screen.getAllByText('施工中').length).toBeGreaterThanOrEqual(3);
     expect(screen.getByRole('button', { name: '收起美国市场分组' })).toHaveAttribute('aria-expanded', 'true');
     expect(screen.getByRole('link', { name: '通胀指标' })).toHaveAttribute('href', '/markets/us/inflation');
     expect(screen.getByRole('link', { name: '就业市场' })).toHaveAttribute('href', '/markets/us/labor');
@@ -92,5 +92,13 @@ describe('TerminalDirectory', () => {
 
     expect(eurozoneIndex).toBeLessThan(japanIndex);
     expect(japanIndex).toBeLessThan(cryptoIndex);
+  });
+
+  it('shows eurozone theme links when the eurozone market is active', () => {
+    render(<TerminalDirectory activeTheme="inflation" activeKey="eurozone-market" activeScopes={['欧元区']} />);
+
+    expect(screen.getByRole('link', { name: '欧元区市场' })).not.toHaveTextContent('施工中');
+    expect(screen.getByRole('link', { name: '通胀与价格' })).toHaveAttribute('href', '/markets/eurozone/inflation');
+    expect(screen.getByRole('link', { name: '欧洲央行政策' })).toHaveAttribute('href', '/markets/eurozone/policy');
   });
 });

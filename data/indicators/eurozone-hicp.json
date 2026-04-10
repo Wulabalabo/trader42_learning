@@ -1,0 +1,36 @@
+{
+  "slug": "eurozone-hicp",
+  "title": "欧元区 HICP",
+  "category": "通胀",
+  "templateKey": "inflation",
+  "navGroup": "通胀与价格",
+  "scopes": ["欧元区"],
+  "summary": "衡量欧元区整体消费者价格变化的总通胀指标。",
+  "historyUnit": "%",
+  "dataProvider": "tradingeconomics-page",
+  "seriesKey": "euro-area/inflation-rate",
+  "fredSeriesId": "CP0000EZ19M086NEST",
+  "releaseCadence": "每月中下旬",
+  "updatedAt": "2026-04-10",
+  "sourceLabel": "TradingEconomics / Eurostat",
+  "currentAssessment": { "level": "High", "reason": "总通胀是市场判断 ECB 压力是否回升的第一眼指标。" },
+  "whyItMatters": "总 HICP 会直接影响市场对 ECB 利率路径的预期。",
+  "whatItMeans": ["它代表欧元区整体价格同比变化。", "和核心通胀一起看，才能分清是表面降温还是底层黏性。"],
+  "cannotTell": ["它不能单独说明底层通胀压力是否已经消失。", "它也不能替代对能源和服务分项的判断。"],
+  "marketImpact": [
+    { "market": "欧元", "level": "High", "reason": "通胀意外会快速改变市场对 ECB 的想象。" },
+    { "market": "欧债", "level": "High", "reason": "收益率通常先反映利率路径变化。" },
+    { "market": "欧洲股票", "level": "Medium", "reason": "估值和增长预期都会受到影响。" }
+  ],
+  "history": [
+    { "date": "2025-08", "value": 2.1 },
+    { "date": "2025-09", "value": 1.9 },
+    { "date": "2025-10", "value": 2.0 },
+    { "date": "2025-11", "value": 2.2 },
+    { "date": "2025-12", "value": 2.1 },
+    { "date": "2026-01", "value": 1.7 },
+    { "date": "2026-02", "value": 1.9 },
+    { "date": "2026-03", "value": 2.5 }
+  ],
+  "historyNote": "当前先展示学习样本路径，用来建立欧元区通胀阅读框架。"
+}

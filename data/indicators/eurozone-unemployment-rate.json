@@ -1,0 +1,35 @@
+{
+  "slug": "eurozone-unemployment-rate",
+  "title": "欧元区失业率",
+  "category": "就业",
+  "templateKey": "labor",
+  "navGroup": "就业与内需",
+  "scopes": ["欧元区"],
+  "summary": "衡量欧元区劳动力市场松紧程度的核心就业指标。",
+  "historyUnit": "%",
+  "dataProvider": "fred",
+  "seriesKey": "LRHUTTTTEZM156S",
+  "fredSeriesId": "LRHUTTTTEZM156S",
+  "releaseCadence": "每月",
+  "updatedAt": "2026-04-10",
+  "sourceLabel": "OECD / FRED",
+  "currentAssessment": { "level": "Medium", "reason": "它是内需和工资韧性的基础判断。" },
+  "whyItMatters": "失业率会影响居民收入、消费和工资压力。",
+  "whatItMeans": ["失业率越低，通常意味着劳动力市场越紧。"],
+  "cannotTell": ["它不能单独说明工资或消费会马上如何变化。"],
+  "marketImpact": [
+    { "market": "欧元", "level": "Medium", "reason": "就业稳健会支撑增长和政策预期。" },
+    { "market": "欧洲股票", "level": "Medium", "reason": "内需韧性会影响盈利预期。" }
+  ],
+  "history": [
+    { "date": "2025-08", "value": 6.6 },
+    { "date": "2025-09", "value": 6.6 },
+    { "date": "2025-10", "value": 6.5 },
+    { "date": "2025-11", "value": 6.5 },
+    { "date": "2025-12", "value": 6.4 },
+    { "date": "2026-01", "value": 6.3 },
+    { "date": "2026-02", "value": 6.3 },
+    { "date": "2026-03", "value": 6.2 }
+  ],
+  "historyNote": "当前先展示学习样本路径，用来建立欧元区就业与内需的阅读直觉。"
+}

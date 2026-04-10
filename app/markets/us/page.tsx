@@ -9,7 +9,7 @@ import { getAllThemeSeeds, getThemeHref } from '@/lib/theme-data';
 export const revalidate = 86400;
 
 export default async function USMarketPage() {
-  const themes = getAllThemeSeeds();
+  const themes = getAllThemeSeeds('us');
   const content = getMarketContent('us');
 
   return (
@@ -79,8 +79,8 @@ export default async function USMarketPage() {
           </CardHeader>
           <CardBody>
             <div className="grid gap-3 lg:grid-cols-2">
-              {themes.map((theme) => (
-                <Link key={theme.slug} href={getThemeHref(theme.slug)} className="block h-full">
+                {themes.map((theme) => (
+                <Link key={theme.slug} href={getThemeHref('us', theme.slug)} className="block h-full">
                   <Card className="h-full transition-colors hover:border-[color:rgba(208,176,112,0.35)] hover:bg-[color:rgba(255,255,255,0.02)]">
                     <CardBody className="space-y-3">
                       <div className="border-b border-[color:var(--border-subtle)] pb-3">

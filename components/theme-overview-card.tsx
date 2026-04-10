@@ -6,12 +6,17 @@ type ThemeOverviewCardProps = {
   theme: MarketTheme;
 };
 
+const marketLabel: Record<MarketTheme['market'], string> = {
+  us: '美国市场',
+  eurozone: '欧元区市场',
+};
+
 export function ThemeOverviewCard({ theme }: ThemeOverviewCardProps) {
   return (
     <Card>
       <CardBody className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[color:var(--border-subtle)] pb-3">
-          <p className="text-[12px] font-medium tracking-[0.12em] text-[color:var(--text-secondary)]">美国市场 / 主题页</p>
+          <p className="text-[12px] font-medium tracking-[0.12em] text-[color:var(--text-secondary)]">{marketLabel[theme.market]} / 主题页</p>
           <p className="text-[12px] font-medium tracking-[0.08em] text-[color:var(--text-secondary)]">{theme.navLabel}</p>
         </div>
 

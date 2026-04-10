@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { getIndicatorNavigationGroups, marketNavigation } from '@/lib/site-navigation';
+import type { MarketSlug } from '@/lib/indicator-types';
 
 import { Card, CardBody, CardHeader } from './ui/card';
 
@@ -15,10 +16,21 @@ type TerminalDirectoryProps = {
 
 const homeItem = { label: '首页', href: '/' } as const;
 
+const scopeToMarket: Record<string, MarketSlug | undefined> = {
+  美国: 'us',
+  欧元区: 'eurozone',
+};
+
 export function TerminalDirectory({ activeKey, activeScopes, activeTheme }: TerminalDirectoryProps) {
-  const groups = getIndicatorNavigationGroups();
-  const hasActiveUsIndicator = groups.some((group) => group.items.some((item) => item.slug === activeKey));
-  const [isUsMarketExpanded, setIsUsMarketExpanded] = useState(activeKey === 'us-market' || Boolean(activeTheme) || hasActiveUsIndicator);
+  const activeMarket =
+    activeScopes?.map((scope) => scopeToMarket[scope]).find(Boolean) ??
+    (activeKey === 'us-market' ? 'us' : activeKey === 'eurozone-market' ? 'eurozone' : activeTheme ? 'us' : undefined);
+  const usGroups = getIndicatorNavigationGroups('us');
+  const eurozoneGroups = getIndicatorNavigationGroups('eurozone');
+  const hasActiveUsIndicator = usGroups.some((group) => group.items.some((item) => item.slug === activeKey));
+  const hasActiveEurozoneIndicator = eurozoneGroups.some((group) => group.items.some((item) => item.slug === activeKey));
+  const [isUsMarketExpanded, setIsUsMarketExpanded] = useState(activeKey === 'us-market' || activeMarket === 'us' || hasActiveUsIndicator);
+  const [isEurozoneMarketExpanded, setIsEurozoneMarketExpanded] = useState(activeKey === 'eurozone-market' || activeMarket === 'eurozone' || hasActiveEurozoneIndicator);
 
   return (
     <Card className="overflow-hidden">
@@ -40,7 +52,11 @@ export function TerminalDirectory({ activeKey, activeScopes, activeTheme }: Term
         </Link>
 
         {marketNavigation.map((market) => {
-          if (market.activeKey === 'us-market') {
+          if (market.market === 'us' || market.market === 'eurozone') {
+            const groups = market.market === 'us' ? usGroups : eurozoneGroups;
+            const isExpanded = market.market === 'us' ? isUsMarketExpanded : isEurozoneMarketExpanded;
+            const setExpanded = market.market === 'us' ? setIsUsMarketExpanded : setIsEurozoneMarketExpanded;
+
             return (
               <div key={market.href} className="space-y-2">
                 <div className="flex items-center gap-2">
@@ -59,23 +75,23 @@ export function TerminalDirectory({ activeKey, activeScopes, activeTheme }: Term
 
                   <button
                     type="button"
-                    aria-expanded={isUsMarketExpanded}
-                    aria-label={isUsMarketExpanded ? '收起美国市场分组' : '展开美国市场分组'}
-                    onClick={() => setIsUsMarketExpanded((value) => !value)}
+                    aria-expanded={isExpanded}
+                    aria-label={isExpanded ? `收起${market.label}分组` : `展开${market.label}分组`}
+                    onClick={() => setExpanded((value) => !value)}
                     className="border border-[color:var(--border-subtle)] px-2 py-2 text-[11px] leading-none text-[color:var(--text-secondary)] transition-colors hover:text-[color:var(--text-primary)]"
                   >
-                    {isUsMarketExpanded ? '−' : '+'}
+                    {isExpanded ? '−' : '+'}
                   </button>
                 </div>
 
-                {isUsMarketExpanded
+                {isExpanded
                   ? groups.map((group) => (
                       <div key={group.label} className="ml-4 border-l border-[color:rgba(255,255,255,0.05)] pl-3">
                         <Link
                           href={group.href}
                           className={[
                             'mb-2 ml-4 block border-l-2 px-3 py-2 text-[12px] font-medium tracking-[0.08em] transition-colors',
-                            activeTheme === group.themeSlug
+                            activeTheme === group.themeSlug && activeMarket === market.market
                               ? 'border-[color:var(--accent-primary)] bg-[color:rgba(208,176,112,0.08)] text-[color:var(--text-primary)]'
                               : 'border-[color:var(--border-subtle)] text-[color:var(--text-secondary)] hover:border-[color:var(--border-strong)] hover:text-[color:var(--text-primary)]',
                           ].join(' ')}

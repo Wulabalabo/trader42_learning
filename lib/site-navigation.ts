@@ -1,5 +1,6 @@
 import { getSeedIndicators } from './indicators';
 import { getThemeHref } from './theme-data';
+import type { MarketSlug } from './indicator-types';
 
 export const primaryNavigation = [
   { label: '首页', href: '/' },
@@ -15,19 +16,25 @@ export const siteScopes = [
 ] as const;
 
 export const marketNavigation = [
-  { label: '美国市场', href: '/markets/us', activeKey: 'us-market', isPlaceholder: false },
-  { label: '中国市场', href: '/markets/china', activeKey: 'china-market', isPlaceholder: true },
-  { label: '欧元区市场', href: '/markets/eurozone', activeKey: 'eurozone-market', isPlaceholder: true },
-  { label: '日本市场', href: '/markets/japan', activeKey: 'japan-market', isPlaceholder: true },
-  { label: 'Crypto 市场', href: '/markets/crypto', activeKey: 'crypto-market', isPlaceholder: true },
+  { label: '美国市场', href: '/markets/us', activeKey: 'us-market', market: 'us', scopeLabel: '美国', isPlaceholder: false },
+  { label: '中国市场', href: '/markets/china', activeKey: 'china-market', market: undefined, scopeLabel: '中国', isPlaceholder: true },
+  { label: '欧元区市场', href: '/markets/eurozone', activeKey: 'eurozone-market', market: 'eurozone', scopeLabel: '欧元区', isPlaceholder: false },
+  { label: '日本市场', href: '/markets/japan', activeKey: 'japan-market', market: undefined, scopeLabel: '日本', isPlaceholder: true },
+  { label: 'Crypto 市场', href: '/markets/crypto', activeKey: 'crypto-market', market: undefined, scopeLabel: 'Crypto', isPlaceholder: true },
 ] as const;
 
-export function getIndicatorNavigationGroups() {
+export function getIndicatorNavigationGroups(market: MarketSlug) {
+  const marketEntry = marketNavigation.find((entry) => entry.market === market);
+
+  if (!marketEntry) {
+    return [];
+  }
+
   const groups = new Map<string, { label: string; themeSlug: string; href: string; items: Array<{ label: string; slug: string }> }>();
 
-  for (const indicator of getSeedIndicators()) {
+  for (const indicator of getSeedIndicators().filter((entry) => entry.scopes.includes(marketEntry.scopeLabel))) {
     const themeSlug = indicator.templateKey === 'generic' ? indicator.slug : indicator.templateKey;
-    const group = groups.get(indicator.navGroup) ?? { label: indicator.navGroup, themeSlug, href: getThemeHref(themeSlug), items: [] };
+    const group = groups.get(indicator.navGroup) ?? { label: indicator.navGroup, themeSlug, href: getThemeHref(market, themeSlug), items: [] };
     group.items.push({ label: indicator.title, slug: indicator.slug });
     groups.set(indicator.navGroup, group);
   }

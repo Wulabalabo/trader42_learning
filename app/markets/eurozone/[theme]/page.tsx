@@ -21,7 +21,7 @@ type MarketThemePageProps = {
 
 export async function generateMetadata({ params }: MarketThemePageProps): Promise<Metadata> {
   const { theme } = await params;
-  const themeSeed = getThemeSeedBySlug('us', theme);
+  const themeSeed = getThemeSeedBySlug('eurozone', theme);
 
   if (!themeSeed) {
     return { title: '未找到主题 | Trader42 指标字典' };
@@ -34,12 +34,12 @@ export async function generateMetadata({ params }: MarketThemePageProps): Promis
 }
 
 export async function generateStaticParams() {
-  return getAllThemeSeeds('us').map((theme) => ({ theme: theme.slug }));
+  return getAllThemeSeeds('eurozone').map((theme) => ({ theme: theme.slug }));
 }
 
 export default async function MarketThemePage({ params }: MarketThemePageProps) {
   const { theme } = await params;
-  const themeData = await getThemeBySlug('us', theme, { loadIndicator: getCachedIndicatorDataBySlugSafe });
+  const themeData = await getThemeBySlug('eurozone', theme, { loadIndicator: getCachedIndicatorDataBySlugSafe });
 
   if (!themeData) {
     notFound();
@@ -47,15 +47,15 @@ export default async function MarketThemePage({ params }: MarketThemePageProps) 
 
   return (
     <TerminalWorkspace
-      leftRail={<TerminalDirectory activeTheme={themeData.slug} activeScopes={['美国']} />}
+      leftRail={<TerminalDirectory activeTheme={themeData.slug} activeKey="eurozone-market" activeScopes={['欧元区']} />}
       rightRail={
         <div className="space-y-3">
           <Card>
             <CardBody className="space-y-3">
               <p className="text-[13px] font-semibold tracking-[0.08em] text-[color:var(--text-primary)]">这一页先解决什么</p>
               <div className="space-y-2 text-[15px] leading-7 text-[color:var(--text-secondary)]">
-                <p>1. 先认识这一组指标在看什么</p>
-                <p>2. 再理解它们彼此的关系</p>
+                <p>1. 先认识欧元区这一组变量到底在看什么</p>
+                <p>2. 再分清 ECB、通胀、增长和就业之间的顺序</p>
                 <p>3. 最后再进入单指标页深读</p>
               </div>
             </CardBody>

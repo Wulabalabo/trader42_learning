@@ -1,22 +1,29 @@
+import eurozoneGrowthTheme from '@/data/themes/eurozone-growth.json';
+import eurozoneInflationTheme from '@/data/themes/eurozone-inflation.json';
+import eurozoneLaborTheme from '@/data/themes/eurozone-labor.json';
+import eurozonePolicyTheme from '@/data/themes/eurozone-policy.json';
 import growthTheme from '@/data/themes/us-growth.json';
 import inflationTheme from '@/data/themes/us-inflation.json';
 import laborTheme from '@/data/themes/us-labor.json';
 import policyTheme from '@/data/themes/us-policy.json';
 
-import type { MarketTheme } from './indicator-types';
+import type { MarketSlug, MarketTheme } from './indicator-types';
 import { getIndicatorDataBySlug } from './indicator-data';
 import { getSeedIndicatorBySlug } from './indicators';
 
 type MarketThemeSeed = Omit<MarketTheme, 'indicators'>;
 
-const themeSeeds = [inflationTheme, laborTheme, policyTheme, growthTheme] as MarketThemeSeed[];
+const themeSeedsByMarket: Record<MarketSlug, MarketThemeSeed[]> = {
+  us: [inflationTheme, laborTheme, policyTheme, growthTheme] as MarketThemeSeed[],
+  eurozone: [eurozoneInflationTheme, eurozonePolicyTheme, eurozoneGrowthTheme, eurozoneLaborTheme] as MarketThemeSeed[],
+};
 
-export function getAllThemeSeeds() {
-  return themeSeeds;
+export function getAllThemeSeeds(market: MarketSlug) {
+  return themeSeedsByMarket[market];
 }
 
-export function getThemeSeedBySlug(slug: string) {
-  return themeSeeds.find((theme) => theme.slug === slug);
+export function getThemeSeedBySlug(market: MarketSlug, slug: string) {
+  return getAllThemeSeeds(market).find((theme) => theme.slug === slug);
 }
 
 type ThemeDataOptions = {
@@ -24,10 +31,11 @@ type ThemeDataOptions = {
 };
 
 export async function getThemeBySlug(
+  market: MarketSlug,
   slug: string,
   { loadIndicator = getIndicatorDataBySlug }: ThemeDataOptions = {},
 ): Promise<MarketTheme | undefined> {
-  const seed = getThemeSeedBySlug(slug);
+  const seed = getThemeSeedBySlug(market, slug);
 
   if (!seed) {
     return undefined;
@@ -42,12 +50,12 @@ export async function getThemeBySlug(
   };
 }
 
-export function getThemeHref(slug: string) {
-  return `/markets/us/${slug}`;
+export function getThemeHref(market: MarketSlug, slug: string) {
+  return `/markets/${market}/${slug}`;
 }
 
-export function getThemeIndicatorSeeds(slug: string) {
-  const seed = getThemeSeedBySlug(slug);
+export function getThemeIndicatorSeeds(market: MarketSlug, slug: string) {
+  const seed = getThemeSeedBySlug(market, slug);
 
   if (!seed) {
     return [];

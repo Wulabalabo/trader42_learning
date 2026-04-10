@@ -19,4 +19,21 @@ describe('tradingEconomicsPageProvider', () => {
       sourceLabel: 'TradingEconomics 公共页（最新值）',
     });
   });
+
+  it('extracts percent-based readings from a TradingEconomics indicator page', async () => {
+    const fetchImpl = vi.fn().mockResolvedValue({
+      ok: true,
+      text: async () =>
+        'Core consumer prices In the Euro Area increased 2.30 percent in March of 2026 over the same month in the previous year. Core Inflation Rate in Euro Area was 2.40 percent in February of 2026.',
+    });
+
+    await expect(
+      tradingEconomicsPageProvider.getSnapshot?.({ seriesKey: 'euro-area/core-inflation-rate', fetchImpl: fetchImpl as typeof fetch }),
+    ).resolves.toEqual({
+      value: 2.3,
+      previousValue: 2.4,
+      periodLabel: '2026-03',
+      sourceLabel: 'TradingEconomics 公共页（最新值）',
+    });
+  });
 });

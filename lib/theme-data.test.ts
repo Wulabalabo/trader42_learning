@@ -34,7 +34,7 @@ function createIndicator(slug: string, value = 1, historySource?: Indicator['his
 
 describe('theme data', () => {
   it('uses the provided loader so theme values can match detail-page data', async () => {
-    const theme = await getThemeBySlug('inflation', {
+    const theme = await getThemeBySlug('us', 'inflation', {
       loadIndicator: async (slug) => createIndicator(slug, slug === 'cpi' ? 9.9 : 1, 'FRED'),
     });
 
@@ -42,8 +42,10 @@ describe('theme data', () => {
     expect(theme?.indicators.find((indicator) => indicator.slug === 'cpi')?.historySource).toBe('FRED');
   });
 
-  it('exposes future-oriented market hrefs', () => {
-    expect(getThemeHref('growth')).toBe('/markets/us/growth');
-    expect(getThemeSeedBySlug('policy')?.navLabel).toBe('央行政策');
+  it('looks up theme seeds and hrefs by market', () => {
+    expect(getThemeHref('us', 'growth')).toBe('/markets/us/growth');
+    expect(getThemeHref('eurozone', 'inflation')).toBe('/markets/eurozone/inflation');
+    expect(getThemeSeedBySlug('us', 'policy')?.navLabel).toBe('央行政策');
+    expect(getThemeSeedBySlug('eurozone', 'policy')?.navLabel).toBe('欧洲央行政策');
   });
 });

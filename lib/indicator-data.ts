@@ -1,5 +1,6 @@
 import { unstable_cache } from 'next/cache';
 
+import { fetchFredSeriesHistory } from './fred';
 import { getProviderAdapter } from './data-providers/provider-registry';
 import type { Indicator } from './indicator-types';
 import { getSeedIndicatorBySlug } from './indicators';
@@ -41,6 +42,18 @@ type IndicatorDataOptions = {
   fetchImpl?: typeof fetch;
 };
 
+async function getFredHistoryForIndicator(
+  indicator: Indicator,
+  apiKey: string | undefined,
+  fetchImpl: typeof fetch,
+): Promise<Indicator['history'] | undefined> {
+  if (!indicator.fredSeriesId || !apiKey) {
+    return undefined;
+  }
+
+  return fetchFredSeriesHistory(indicator.fredSeriesId, apiKey, fetchImpl);
+}
+
 export async function getIndicatorDataBySlug(
   slug: string,
   { apiKey = process.env.FRED_API_KEY, fetchImpl = fetch }: IndicatorDataOptions = {},
@@ -63,11 +76,13 @@ export async function getIndicatorDataBySlug(
   try {
     if (provider.getSnapshot) {
       const latestSnapshot = await provider.getSnapshot({ seriesKey: indicator.seriesKey, apiKey, fetchImpl });
+      const fredHistory = await getFredHistoryForIndicator(indicator, apiKey, fetchImpl);
 
       return {
         ...indicator,
+        history: fredHistory?.length ? normalizeHistoryForIndicator(indicator, fredHistory) : indicator.history,
         latestSnapshot,
-        historySource: '样本数据',
+        historySource: fredHistory?.length ? 'FRED' : '样本数据',
       };
     }
 

@@ -5,6 +5,11 @@ import corePce from '@/data/indicators/core-pce.json';
 import cpi from '@/data/indicators/cpi.json';
 import consumerConfidence from '@/data/indicators/consumer-confidence.json';
 import continuingJoblessClaims from '@/data/indicators/continuing-jobless-claims.json';
+import ecbDepositRate from '@/data/indicators/ecb-deposit-rate.json';
+import eurozoneCompositePmi from '@/data/indicators/eurozone-composite-pmi.json';
+import eurozoneCoreHicp from '@/data/indicators/eurozone-core-hicp.json';
+import eurozoneHicp from '@/data/indicators/eurozone-hicp.json';
+import eurozoneUnemploymentRate from '@/data/indicators/eurozone-unemployment-rate.json';
 import fomc from '@/data/indicators/fomc-rate-decision.json';
 import initialJoblessClaims from '@/data/indicators/initial-jobless-claims.json';
 import ismPmi from '@/data/indicators/ism-pmi.json';
@@ -46,6 +51,11 @@ const rawSeedIndicators: IndicatorSeed[] = [
   continuingJoblessClaims as IndicatorSeed,
   ismServicesPmi as IndicatorSeed,
   consumerConfidence as IndicatorSeed,
+  eurozoneHicp as IndicatorSeed,
+  eurozoneCoreHicp as IndicatorSeed,
+  ecbDepositRate as IndicatorSeed,
+  eurozoneCompositePmi as IndicatorSeed,
+  eurozoneUnemploymentRate as IndicatorSeed,
 ];
 
 const defaultTemplateByCategory: Record<string, IndicatorTemplateKey> = {
