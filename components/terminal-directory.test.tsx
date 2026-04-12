@@ -15,7 +15,7 @@ describe('TerminalDirectory', () => {
     expect(screen.getByRole('link', { name: /欧元区市场/ })).toHaveAttribute('href', '/markets/eurozone');
     expect(screen.getByRole('link', { name: /日本市场/ })).toHaveAttribute('href', '/markets/japan');
     expect(screen.getByRole('link', { name: /Crypto 市场/ })).toHaveAttribute('href', '/markets/crypto');
-    expect(screen.getAllByText('施工中').length).toBeGreaterThanOrEqual(3);
+    expect(screen.getAllByText('施工中').length).toBeGreaterThanOrEqual(2);
     expect(screen.getByRole('button', { name: '收起美国市场分组' })).toHaveAttribute('aria-expanded', 'true');
     expect(screen.getByRole('link', { name: '通胀指标' })).toHaveAttribute('href', '/markets/us/inflation');
     expect(screen.getByRole('link', { name: '就业市场' })).toHaveAttribute('href', '/markets/us/labor');
@@ -100,5 +100,23 @@ describe('TerminalDirectory', () => {
     expect(screen.getByRole('link', { name: '欧元区市场' })).not.toHaveTextContent('施工中');
     expect(screen.getByRole('link', { name: '通胀与价格' })).toHaveAttribute('href', '/markets/eurozone/inflation');
     expect(screen.getByRole('link', { name: '欧洲央行政策' })).toHaveAttribute('href', '/markets/eurozone/policy');
+  });
+
+  it('expands the china market group when china is active', () => {
+    render(<TerminalDirectory activeKey="china-market" activeScopes={['中国']} />);
+
+    expect(screen.getByRole('button', { name: '收起中国市场分组' })).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('link', { name: '中国市场' })).not.toHaveTextContent('施工中');
+    expect(screen.getByRole('link', { name: '增长与内需' })).toHaveAttribute('href', '/markets/china/demand');
+    expect(screen.getByRole('link', { name: '地产与信用脉冲' })).toHaveAttribute('href', '/markets/china/credit');
+    expect(screen.getByRole('link', { name: '政策托底与汇率' })).toHaveAttribute('href', '/markets/china/policy');
+    expect(screen.getByRole('link', { name: '商品需求与区域传导' })).toHaveAttribute('href', '/markets/china/commodities');
+  });
+
+  it('collapses the china market group by default on non-china pages', () => {
+    render(<TerminalDirectory activeKey="us-market" />);
+
+    expect(screen.getByRole('button', { name: '展开中国市场分组' })).toHaveAttribute('aria-expanded', 'false');
+    expect(screen.queryByRole('link', { name: '增长与内需' })).toBeNull();
   });
 });

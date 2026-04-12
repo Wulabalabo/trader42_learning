@@ -1,21 +1,104 @@
-import { MarketPlaceholderPage } from '@/components/market-placeholder-page';
+import Link from 'next/link';
+
+import { Card, CardBody, CardHeader } from '@/components/ui/card';
+import { TerminalDirectory } from '@/components/terminal-directory';
+import { TerminalWorkspace } from '@/components/terminal-workspace';
+import { getMarketContent } from '@/lib/market-data';
+import { getAllThemeSeeds, getThemeHref } from '@/lib/theme-data';
 
 export const revalidate = 86400;
 
 export default async function ChinaMarketPage() {
+  const themes = getAllThemeSeeds('china');
+  const content = getMarketContent('china');
+
   return (
-    <MarketPlaceholderPage
-      title="中国市场"
-      activeKey="china-market"
-      activeScopes={['中国']}
-      hero="中国市场会更关注增长、地产、政策托底、汇率与商品需求。这些变量不只影响中国资产，也经常影响全球制造业和大宗商品定价。"
-      whyItMatters="当市场开始重新定价中国增长、地产修复、财政与货币政策时，商品、亚洲市场、工业周期和风险偏好都会被一起带动。"
-      coverage={[
-        '1. 增长与内需',
-        '2. 地产与信用脉冲',
-        '3. 政策托底与汇率',
-        '4. 商品需求与区域传导',
-      ]}
-    />
+    <TerminalWorkspace
+      leftRail={<TerminalDirectory activeKey="china-market" activeScopes={['中国']} />}
+      rightRail={
+        <div className="space-y-3">
+          <Card>
+            <CardBody className="space-y-3">
+              <div className="space-y-2 border-b border-[color:var(--border-subtle)] pb-3">
+                <p className="text-[12px] font-medium tracking-[0.08em] text-[color:var(--text-secondary)]">学习路径</p>
+                <p className="text-[13px] font-semibold tracking-[0.08em] text-[color:var(--text-primary)]">{content.teachingStepsTitle}</p>
+              </div>
+
+              <div className="space-y-2">
+                {content.teachingSteps.map((step, index) => (
+                  <div key={step} className="flex gap-3 rounded-[3px] border border-[color:var(--border-subtle)] bg-[color:rgba(255,255,255,0.02)] px-3 py-3">
+                    <span className="min-w-10 text-[12px] font-semibold tracking-[0.12em] text-[color:var(--accent-primary)]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <p className="text-[14px] leading-6 text-[color:var(--text-secondary)]">{step}</p>
+                  </div>
+                ))}
+              </div>
+            </CardBody>
+          </Card>
+        </div>
+      }
+    >
+      <div className="space-y-3">
+        <Card>
+          <CardBody className="space-y-4">
+            <div className="border-b border-[color:var(--border-subtle)] pb-3">
+              <p className="text-[12px] font-medium tracking-[0.12em] text-[color:var(--text-secondary)]">{content.eyebrow}</p>
+            </div>
+
+            <div className="space-y-3">
+              <h1 className="text-[2.2rem] font-semibold tracking-[0.04em] text-[color:var(--text-primary)] sm:text-[2.7rem]">{content.title}</h1>
+              <p className="max-w-3xl text-[15px] leading-7 text-[color:var(--text-secondary)]">{content.hero}</p>
+            </div>
+          </CardBody>
+        </Card>
+
+        <Card>
+          <CardBody className="space-y-3">
+            <div className="space-y-2 border-b border-[color:var(--border-subtle)] pb-3">
+              <p className="text-[12px] font-medium tracking-[0.08em] text-[color:var(--text-secondary)]">整体大图</p>
+              <p className="text-[13px] font-semibold tracking-[0.08em] text-[color:var(--text-primary)]">{content.bigPicture.title}</p>
+              <p className="text-[14px] leading-6 text-[color:var(--text-secondary)]">{content.bigPicture.description}</p>
+            </div>
+
+            <div className="grid gap-2 lg:grid-cols-2">
+              {content.bigPicture.items.map((item) => (
+                <div key={item} className="flex gap-3 rounded-[3px] border border-[color:var(--border-subtle)] bg-[color:rgba(255,255,255,0.02)] px-3 py-3">
+                  <span className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-[color:var(--accent-primary)]" />
+                  <p className="text-[14px] leading-6 text-[color:var(--text-secondary)]">{item}</p>
+                </div>
+              ))}
+            </div>
+          </CardBody>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <p className="text-[13px] font-semibold tracking-[0.08em] text-[color:var(--text-primary)]">{content.themeSectionTitle}</p>
+            <p className="mt-2 text-[15px] leading-7 text-[color:var(--text-secondary)]">{content.themeSectionDescription}</p>
+          </CardHeader>
+          <CardBody>
+            <div className="grid gap-3 lg:grid-cols-2">
+              {themes.map((theme) => (
+                <Link key={theme.slug} href={getThemeHref('china', theme.slug)} className="block h-full">
+                  <Card className="h-full transition-colors hover:border-[color:rgba(208,176,112,0.35)] hover:bg-[color:rgba(255,255,255,0.02)]">
+                    <CardBody className="space-y-3">
+                      <div className="border-b border-[color:var(--border-subtle)] pb-3">
+                        <p className="text-[12px] font-medium tracking-[0.08em] text-[color:var(--text-secondary)]">主题入口</p>
+                        <h2 className="mt-2 text-[18px] font-semibold tracking-[0.04em] text-[color:var(--text-primary)]">{theme.navLabel}</h2>
+                      </div>
+
+                      <p className="text-sm leading-6 text-[color:var(--text-secondary)]">{theme.summary}</p>
+
+                      <p className="text-[12px] leading-6 text-[color:var(--text-secondary)]">包含指标：{theme.indicatorSlugs.length} 个</p>
+                    </CardBody>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </CardBody>
+        </Card>
+      </div>
+    </TerminalWorkspace>
   );
 }

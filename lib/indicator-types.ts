@@ -3,7 +3,7 @@ export type IndicatorStatus = 'live' | 'placeholder';
 export type IndicatorTemplateKey = 'inflation' | 'labor' | 'policy' | 'growth' | 'generic';
 export type IndicatorPriority = 'P1' | 'P2' | 'P3';
 export type IndicatorDataProvider = 'fred' | 'openbb' | 'aktools' | 'sample' | 'spglobal-release' | 'tradingeconomics-page';
-export type MarketSlug = 'us' | 'eurozone';
+export type MarketSlug = 'us' | 'eurozone' | 'china';
 
 export const impactLevelLabel: Record<ImpactLevel, string> = {
   High: '高',
@@ -55,6 +55,7 @@ export interface Indicator {
   priority: IndicatorPriority;
   templateKey: IndicatorTemplateKey;
   navGroup: string;
+  themeSlug?: string;
   dataProvider: IndicatorDataProvider;
   seriesKey?: string;
   revalidateSeconds: number;

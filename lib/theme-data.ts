@@ -2,6 +2,10 @@ import eurozoneGrowthTheme from '@/data/themes/eurozone-growth.json';
 import eurozoneInflationTheme from '@/data/themes/eurozone-inflation.json';
 import eurozoneLaborTheme from '@/data/themes/eurozone-labor.json';
 import eurozonePolicyTheme from '@/data/themes/eurozone-policy.json';
+import chinaDemandTheme from '@/data/themes/china-demand.json';
+import chinaCreditTheme from '@/data/themes/china-credit.json';
+import chinaPolicyTheme from '@/data/themes/china-policy.json';
+import chinaCommoditiesTheme from '@/data/themes/china-commodities.json';
 import growthTheme from '@/data/themes/us-growth.json';
 import inflationTheme from '@/data/themes/us-inflation.json';
 import laborTheme from '@/data/themes/us-labor.json';
@@ -16,6 +20,7 @@ type MarketThemeSeed = Omit<MarketTheme, 'indicators'>;
 const themeSeedsByMarket: Record<MarketSlug, MarketThemeSeed[]> = {
   us: [inflationTheme, laborTheme, policyTheme, growthTheme] as MarketThemeSeed[],
   eurozone: [eurozoneInflationTheme, eurozonePolicyTheme, eurozoneGrowthTheme, eurozoneLaborTheme] as MarketThemeSeed[],
+  china: [chinaDemandTheme, chinaCreditTheme, chinaPolicyTheme, chinaCommoditiesTheme] as MarketThemeSeed[],
 };
 
 export function getAllThemeSeeds(market: MarketSlug) {

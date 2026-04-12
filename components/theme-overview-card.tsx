@@ -9,6 +9,7 @@ type ThemeOverviewCardProps = {
 const marketLabel: Record<MarketTheme['market'], string> = {
   us: '美国市场',
   eurozone: '欧元区市场',
+  china: '中国市场',
 };
 
 export function ThemeOverviewCard({ theme }: ThemeOverviewCardProps) {

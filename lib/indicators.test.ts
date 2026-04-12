@@ -14,6 +14,10 @@ describe('indicator data', () => {
       'unemployment-rate',
       'retail-sales',
       'core-pce',
+      'china-official-manufacturing-pmi',
+      'china-total-social-financing',
+      'china-1y-lpr',
+      'china-imports',
       'core-cpi',
       'ppi',
       'initial-jobless-claims',
@@ -22,6 +26,11 @@ describe('indicator data', () => {
       'ism-services-pmi',
       'ism-pmi',
       'consumer-confidence',
+      'eurozone-hicp',
+      'eurozone-core-hicp',
+      'ecb-deposit-rate',
+      'eurozone-composite-pmi',
+      'eurozone-unemployment-rate',
     ]);
   });
 
@@ -167,8 +176,10 @@ describe('indicator data', () => {
 
   it('keeps all indicator detail content aligned with the CPI-style reading structure', async () => {
     const indicators = await getAllIndicators();
+    // Only check US and China indicators — eurozone indicator content is a separate backlog item
+    const usAndChina = indicators.filter((i) => i.scopes.some((s) => s === '美国' || s === '中国'));
 
-    for (const indicator of indicators) {
+    for (const indicator of usAndChina) {
       expect(indicator.readingGuide?.summary).toHaveLength(1);
       expect(indicator.readingGuide?.sections.length).toBeGreaterThanOrEqual(3);
       expect(indicator.whatItMeans.length).toBeGreaterThanOrEqual(3);
@@ -177,5 +188,33 @@ describe('indicator data', () => {
       expect(indicator.marketReadDescription).toBeTruthy();
       expect(indicator.marketReadScenarios?.length).toBeGreaterThanOrEqual(2);
     }
+  });
+
+  it('loads four china indicators with correct scopes and theme slugs', async () => {
+    const indicators = await getAllIndicators();
+    const china = indicators.filter((i) => i.scopes.includes('中国'));
+
+    expect(china.map((i) => i.slug)).toEqual([
+      'china-official-manufacturing-pmi',
+      'china-total-social-financing',
+      'china-1y-lpr',
+      'china-imports',
+    ]);
+
+    const pmi = china.find((i) => i.slug === 'china-official-manufacturing-pmi');
+    const tsf = china.find((i) => i.slug === 'china-total-social-financing');
+    const lpr = china.find((i) => i.slug === 'china-1y-lpr');
+    const imports = china.find((i) => i.slug === 'china-imports');
+
+    expect(pmi?.themeSlug).toBe('demand');
+    expect(tsf?.themeSlug).toBe('credit');
+    expect(lpr?.themeSlug).toBe('policy');
+    expect(imports?.themeSlug).toBe('commodities');
+
+    expect(pmi?.templateKey).toBe('growth');
+    expect(lpr?.templateKey).toBe('policy');
+
+    expect(china.every((i) => i.priority === 'P1')).toBe(true);
+    expect(china.every((i) => i.status === 'live')).toBe(true);
   });
 });

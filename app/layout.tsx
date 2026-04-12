@@ -10,7 +10,7 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
   title: 'Trader42 指标字典',
-  description: '面向新手交易员的宏观与市场指标字典，先从美国开始，后续扩展到 Global、中国和 Crypto。',
+  description: '面向新手交易员的宏观与市场指标字典，已覆盖美国、欧元区与中国市场，持续扩展日本和 Crypto。',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

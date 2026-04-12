@@ -20,6 +20,10 @@ import pce from '@/data/indicators/pce.json';
 import ppi from '@/data/indicators/ppi.json';
 import retailSales from '@/data/indicators/retail-sales.json';
 import unemploymentRate from '@/data/indicators/unemployment-rate.json';
+import chinaOfficialManufacturingPmi from '@/data/indicators/china-official-manufacturing-pmi.json';
+import chinaTotalSocialFinancing from '@/data/indicators/china-total-social-financing.json';
+import china1yLpr from '@/data/indicators/china-1y-lpr.json';
+import chinaImports from '@/data/indicators/china-imports.json';
 
 import { getProviderAdapter } from './data-providers/provider-registry';
 import type {
@@ -56,6 +60,10 @@ const rawSeedIndicators: IndicatorSeed[] = [
   ecbDepositRate as IndicatorSeed,
   eurozoneCompositePmi as IndicatorSeed,
   eurozoneUnemploymentRate as IndicatorSeed,
+  chinaOfficialManufacturingPmi as IndicatorSeed,
+  chinaTotalSocialFinancing as IndicatorSeed,
+  china1yLpr as IndicatorSeed,
+  chinaImports as IndicatorSeed,
 ];
 
 const defaultTemplateByCategory: Record<string, IndicatorTemplateKey> = {

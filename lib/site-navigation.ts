@@ -17,7 +17,7 @@ export const siteScopes = [
 
 export const marketNavigation = [
   { label: '美国市场', href: '/markets/us', activeKey: 'us-market', market: 'us', scopeLabel: '美国', isPlaceholder: false },
-  { label: '中国市场', href: '/markets/china', activeKey: 'china-market', market: undefined, scopeLabel: '中国', isPlaceholder: true },
+  { label: '中国市场', href: '/markets/china', activeKey: 'china-market', market: 'china', scopeLabel: '中国', isPlaceholder: false },
   { label: '欧元区市场', href: '/markets/eurozone', activeKey: 'eurozone-market', market: 'eurozone', scopeLabel: '欧元区', isPlaceholder: false },
   { label: '日本市场', href: '/markets/japan', activeKey: 'japan-market', market: undefined, scopeLabel: '日本', isPlaceholder: true },
   { label: 'Crypto 市场', href: '/markets/crypto', activeKey: 'crypto-market', market: undefined, scopeLabel: 'Crypto', isPlaceholder: true },
@@ -33,7 +33,7 @@ export function getIndicatorNavigationGroups(market: MarketSlug) {
   const groups = new Map<string, { label: string; themeSlug: string; href: string; items: Array<{ label: string; slug: string }> }>();
 
   for (const indicator of getSeedIndicators().filter((entry) => entry.scopes.includes(marketEntry.scopeLabel))) {
-    const themeSlug = indicator.templateKey === 'generic' ? indicator.slug : indicator.templateKey;
+    const themeSlug = indicator.themeSlug ?? (indicator.templateKey === 'generic' ? indicator.slug : indicator.templateKey);
     const group = groups.get(indicator.navGroup) ?? { label: indicator.navGroup, themeSlug, href: getThemeHref(market, themeSlug), items: [] };
     group.items.push({ label: indicator.title, slug: indicator.slug });
     groups.set(indicator.navGroup, group);

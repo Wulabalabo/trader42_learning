@@ -19,18 +19,22 @@ const homeItem = { label: '首页', href: '/' } as const;
 const scopeToMarket: Record<string, MarketSlug | undefined> = {
   美国: 'us',
   欧元区: 'eurozone',
+  中国: 'china',
 };
 
 export function TerminalDirectory({ activeKey, activeScopes, activeTheme }: TerminalDirectoryProps) {
   const activeMarket =
     activeScopes?.map((scope) => scopeToMarket[scope]).find(Boolean) ??
-    (activeKey === 'us-market' ? 'us' : activeKey === 'eurozone-market' ? 'eurozone' : activeTheme ? 'us' : undefined);
+    (activeKey === 'us-market' ? 'us' : activeKey === 'eurozone-market' ? 'eurozone' : activeKey === 'china-market' ? 'china' : activeTheme ? 'us' : undefined);
   const usGroups = getIndicatorNavigationGroups('us');
   const eurozoneGroups = getIndicatorNavigationGroups('eurozone');
+  const chinaGroups = getIndicatorNavigationGroups('china');
   const hasActiveUsIndicator = usGroups.some((group) => group.items.some((item) => item.slug === activeKey));
   const hasActiveEurozoneIndicator = eurozoneGroups.some((group) => group.items.some((item) => item.slug === activeKey));
+  const hasActiveChinaIndicator = chinaGroups.some((group) => group.items.some((item) => item.slug === activeKey));
   const [isUsMarketExpanded, setIsUsMarketExpanded] = useState(activeKey === 'us-market' || activeMarket === 'us' || hasActiveUsIndicator);
   const [isEurozoneMarketExpanded, setIsEurozoneMarketExpanded] = useState(activeKey === 'eurozone-market' || activeMarket === 'eurozone' || hasActiveEurozoneIndicator);
+  const [isChinaMarketExpanded, setIsChinaMarketExpanded] = useState(activeKey === 'china-market' || activeMarket === 'china' || hasActiveChinaIndicator);
 
   return (
     <Card className="overflow-hidden">
@@ -52,10 +56,13 @@ export function TerminalDirectory({ activeKey, activeScopes, activeTheme }: Term
         </Link>
 
         {marketNavigation.map((market) => {
-          if (market.market === 'us' || market.market === 'eurozone') {
-            const groups = market.market === 'us' ? usGroups : eurozoneGroups;
-            const isExpanded = market.market === 'us' ? isUsMarketExpanded : isEurozoneMarketExpanded;
-            const setExpanded = market.market === 'us' ? setIsUsMarketExpanded : setIsEurozoneMarketExpanded;
+          if (market.market === 'us' || market.market === 'eurozone' || market.market === 'china') {
+            const allGroups = { us: usGroups, eurozone: eurozoneGroups, china: chinaGroups };
+            const allExpanded = { us: isUsMarketExpanded, eurozone: isEurozoneMarketExpanded, china: isChinaMarketExpanded };
+            const allSetExpanded = { us: setIsUsMarketExpanded, eurozone: setIsEurozoneMarketExpanded, china: setIsChinaMarketExpanded };
+            const groups = allGroups[market.market];
+            const isExpanded = allExpanded[market.market];
+            const setExpanded = allSetExpanded[market.market];
 
             return (
               <div key={market.href} className="space-y-2">

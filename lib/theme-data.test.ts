@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import type { Indicator } from './indicator-types';
 
-import { getThemeBySlug, getThemeHref, getThemeSeedBySlug } from './theme-data';
+import { getAllThemeSeeds, getThemeBySlug, getThemeHref, getThemeSeedBySlug } from './theme-data';
 
 function createIndicator(slug: string, value = 1, historySource?: Indicator['historySource']): Indicator {
   return {
@@ -45,7 +45,23 @@ describe('theme data', () => {
   it('looks up theme seeds and hrefs by market', () => {
     expect(getThemeHref('us', 'growth')).toBe('/markets/us/growth');
     expect(getThemeHref('eurozone', 'inflation')).toBe('/markets/eurozone/inflation');
+    expect(getThemeHref('china', 'demand')).toBe('/markets/china/demand');
     expect(getThemeSeedBySlug('us', 'policy')?.navLabel).toBe('央行政策');
     expect(getThemeSeedBySlug('eurozone', 'policy')?.navLabel).toBe('欧洲央行政策');
+    expect(getThemeSeedBySlug('china', 'demand')?.navLabel).toBe('增长与内需');
+    expect(getThemeSeedBySlug('china', 'credit')?.navLabel).toBe('地产与信用脉冲');
+    expect(getThemeSeedBySlug('china', 'policy')?.navLabel).toBe('政策托底与汇率');
+    expect(getThemeSeedBySlug('china', 'commodities')?.navLabel).toBe('商品需求与区域传导');
+  });
+
+  it('returns four china theme seeds', () => {
+    const seeds = getAllThemeSeeds('china');
+
+    expect(seeds).toHaveLength(4);
+    expect(seeds.map((s) => s.slug)).toContain('demand');
+    expect(seeds.map((s) => s.slug)).toContain('credit');
+    expect(seeds.map((s) => s.slug)).toContain('policy');
+    expect(seeds.map((s) => s.slug)).toContain('commodities');
+    expect(seeds.every((s) => s.market === 'china')).toBe(true);
   });
 });
